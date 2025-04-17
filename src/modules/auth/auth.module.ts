@@ -5,12 +5,14 @@ import { UsersModule } from '../users/users.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from 'src/common/constants/constant';
-import { UsersService } from '../users/users.service';
+import { UsersService } from '../users/services/users.service';
 import { LocalStrategy } from 'src/common/strategy/local.strategy';
 import { JwtStrategy } from 'src/common/strategy/jwt.strategy';
+import { PrismaModule } from 'src/common/prisma/prisma.module';
 
 @Module({
   imports: [
+    PrismaModule,
     UsersModule,
     PassportModule,
     JwtModule.register({
