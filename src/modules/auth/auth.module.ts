@@ -10,6 +10,7 @@ import { LocalStrategy } from 'src/common/strategy/local.strategy';
 import { JwtStrategy } from 'src/common/strategy/jwt.strategy';
 import { PrismaModule } from 'src/common/prisma/prisma.module';
 import { UserRepository } from '../users/repositories/user.repository';
+import { HashService } from 'src/common/utils/hash.service';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { UserRepository } from '../users/repositories/user.repository';
       signOptions: { expiresIn: '30d' },
     }),
   ],
-  providers: [AuthService, UsersService, LocalStrategy, JwtStrategy,UserRepository],
+  providers: [AuthService, UsersService, LocalStrategy, JwtStrategy,UserRepository, HashService],
   controllers: [AuthController]
 })
 export class AuthModule {}
