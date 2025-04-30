@@ -15,4 +15,5 @@ export class CreateUserDto {
 export class ValidateUserDTO {
     sub: string;
     username: string;
+    roles: string[]
 }
