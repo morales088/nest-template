@@ -1,5 +1,5 @@
 // create-user.dto.ts
-import { IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { IsArray, IsIn, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -13,7 +13,13 @@ export class CreateUserDto {
 }
 
 export class ValidateUserDTO {
-    sub: string;
-    username: string;
-    roles: string[]
+  @IsString()
+  sub: string;
+
+  @IsString()
+  username: string;
+
+  @IsArray()
+  @IsIn(['user', 'admin', 'instructor'], { each: true })
+  roles: string[];
 }
